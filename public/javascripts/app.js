@@ -56,10 +56,10 @@ const Station = {
 	props: ['id'],
 	methods: {
 		getStation() {
-			axios.get('/api/stations/' + this.id).then(response => {this.station = response.data})
+			axios.get('http://safetelecom.net/radio/api/stations/' + this.id).then(response => {this.station = response.data})
 		},
 		save() {
-			axios.put('/api/stations/' + this.station._id, this.station).then(response => {
+			axios.put('http://safetelecom.net/radio/api/stations/' + this.station._id, this.station).then(response => {
 				router.push({ path: '/stations' })
 			})
 		}
@@ -73,7 +73,7 @@ const Stations = {
 	},
 	methods: {
 		getStations() {
-			axios.get('/api/stations').then(response => {this.stations = response.data})
+			axios.get('http://safetelecom.net/radio/api/stations').then(response => {this.stations = response.data})
 		},
 		testUrl(url, type) {
 			if(type == 'VLC') {
@@ -175,23 +175,23 @@ const Podcast = {
 	methods: {
 		getPodcast() {
 			if(this.id != 'new') {
-				axios.get('/api/podcasts/' + this.id).then(response => {this.podcast = response.data})
+				axios.get('http://safetelecom.net/radio/api/podcasts/' + this.id).then(response => {this.podcast = response.data})
 			}
 		},
 		saveItem() {
 			if(this.id === 'new') {
-				axios.post('/api/podcasts/', this.podcast).then(response => {
+				axios.post('http://safetelecom.net/radio/api/podcasts/', this.podcast).then(response => {
 					router.push({ path: '/podcasts' })
 				})
 			} else {
-				axios.put('/api/podcasts/' + this.podcast._id, this.podcast).then(response => {
+				axios.put('http://safetelecom.net/radio/api/podcasts/' + this.podcast._id, this.podcast).then(response => {
 					router.push({ path: '/podcasts' })
 				})
 			}
 		},
 		deleteItem() {
 			if (confirm('Are you sure you want to delete? This action cannot be reversed.')) {
-				axios.delete('/api/podcasts/' + this.podcast._id, this.podcast).then(response => {
+				axios.delete('http://safetelecom.net/radio/api/podcasts/' + this.podcast._id, this.podcast).then(response => {
 					router.push({ path: '/podcasts' })
 				})
 			} else {
@@ -202,7 +202,7 @@ const Podcast = {
 			router.go(-1)
 		},
 		parse(url) {
-			axios.get('/parsexml?url=' + url).then(response => {
+			axios.get('http://safetelecom.net/radio/parsexml?url=' + url).then(response => {
 				this.podcast.base64 = response.data.base64
 				this.podcast.name = response.data.title
 			})
@@ -217,7 +217,7 @@ const Podcasts = {
 	},
 	methods: {
 		getPodcasts() {
-			axios.get('/api/podcasts').then(response => {this.podcasts = response.data})
+			axios.get('http://safetelecom.net/radio/api/podcasts').then(response => {this.podcasts = response.data})
 		},
 		openModal() {
 			alert('Opened Modal')
