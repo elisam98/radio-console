@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width")
+		title= title
+		link(rel='stylesheet', href='//fonts.googleapis.com/icon?family=Material+Icons')
+		link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css')
+		link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body.grey.lighten-4
+		#app
+			header
+				nav
+					.nav-wrapper.container
+						a.brand-logo(href="#")= title
+						a.button-collapse(href="#" data-activates="side-menu")
+							i.material-icons menu
+						ul.right.hide-on-med-and-down
+							router-link(tag="li" active-class="active" to="/stations")
+								a Stations
+							router-link(tag="li" active-class="active" to="/podcasts")
+								a Podcasts
+						ul.side-nav#side-demo
+							li.user-details Menu
+							li
+								router-link(to="/stations")
+									i.material-icons radio
+									| Stations
+							li
+								router-link(to="/podcasts")
+									i.material-icons rss_feed
+									| Podcasts
+			main
+				.container
+					transition(name="fade")
+						router-view
+
+		script(src='//code.jquery.com/jquery-3.1.1.min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js')
+		script(src='//unpkg.com/vue/dist/vue.js')
+		script(src='//unpkg.com/vue-router/dist/vue-router.js')
+		script(src='//unpkg.com/axios/dist/axios.min.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js')
+		script(src='/javascripts/app.js')

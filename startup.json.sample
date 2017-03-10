@@ -1,0 +1,15 @@
+{
+	"apps" : [{
+		"name" : "callerid",
+		"script" : "./bin/www",
+		"watch" : true,
+		"merge_logs" : true,
+		"env": {
+			"DB_USER" : "",
+			"DB_PASS" : "",
+			"DB_HOST" : "",
+			"DB_PORT" : ""
+		}
+	}]
+}
+
