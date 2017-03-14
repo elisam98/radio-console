@@ -1,7 +1,7 @@
 $(()=> {
-	$(".button-collapse").sideNav({
+	$('.button-collapse').sideNav({
 		draggable: true
-	});
+	})
 })
 
 const Station = {
@@ -79,7 +79,7 @@ const Stations = {
 			if(type == 'VLC') {
 				return url
 			} else if (type == 'PLS') {
-				axios.get(url).then(response => console.log(result.body))
+				axios.get(url) //.then(response => console.log(result.body))
 			}
 		}
 	},
@@ -107,16 +107,16 @@ const Stations = {
 		sortedStations() {
 			return this.stations.sort(function(a, b) {
 				if (a.name < b.name)
-					return -1;
+					return -1
 				if (a.name > b.name)
-					return 1;
-				return 0;
+					return 1
+				return 0
 			})
 		}
 	},
 	components: {
 		'station': Station
-	},
+	}
 }
 
 
@@ -252,10 +252,10 @@ const Podcasts = {
 		sortedPodcasts() {
 			return this.podcasts.sort((a, b) => {
 				if (a.name < b.name)
-					return -1;
+					return -1
 				if (a.name > b.name)
-					return 1;
-				return 0;
+					return 1
+				return 0
 			})
 		}
 	},
@@ -273,7 +273,7 @@ const routes = [
 	{ path: '/stations', component: Stations },
 	{ path: '/stations/:id', name: 'station', component: Station, props: true },
 	{ path: '/podcasts', component: Podcasts },
-	{ path: '/podcasts/:id', name: 'podcast', component: Podcast, props: true },
+	{ path: '/podcasts/:id', name: 'podcast', component: Podcast, props: true }
 ]
 
 
